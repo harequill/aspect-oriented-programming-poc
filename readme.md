@@ -61,10 +61,10 @@ public class CalculatorService {
 ```
 
 **Problems:**
-- Code duplication - logging code repeated in every method
-- Mixed concerns - business logic buried in logging code
-- Hard to maintain - changing logging requires modifying every method
-- Error-prone - easy to forget logging in new methods
+- Code duplication: logging code repeated in every method
+- Mixed concerns: business logic buried in logging code
+- Hard to maintain: changing logging requires modifying every method
+- Error-prone: easy to forget logging in new methods
 
 **With AOP**, your service class stays clean:
 
@@ -200,7 +200,7 @@ public class CalculatorService {
 }
 ```
 
-**Notice:** This class contains ONLY business logic. No logging, no error handling output—just pure calculation logic. All of this is handled by Aspect
+**Notice:** This class contains ONLY business logic. No logging, no error handling output, just pure calculation logic. All of this is handled by Aspect
 
 ### 2. The Aspect (LoggingAspect.java)
 
