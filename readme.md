@@ -473,6 +473,6 @@ AOP is not a replacement for Object-Oriented Programming. It's a complement that
 
 ---
 
-**License:** MIT
+**License:** The Unlicense
 
 Feel free to use this project as a learning resource or starting point for your own AOP implementations.
