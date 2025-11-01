@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.aspectj:aspectjrt:1.9.20'
+    implementation 'org.aspectj:aspectjweaver:1.9.20'
+}
+
+application {
+    mainClass = 'com.example.Main'
+}
+
+// Configura o run task para usar o javaagent
+tasks.named('run', JavaExec) {
+    doFirst {
+        def aspectjWeaver = configurations.runtimeClasspath.files.find { 
+            it.name.contains('aspectjweaver') 
+        }
+        if (aspectjWeaver) {
+            jvmArgs("-javaagent:${aspectjWeaver.absolutePath}")
+            jvmArgs("-Dorg.aspectj.weaver.showWeaveInfo=true")
+        } else {
+            throw new GradleException("AspectJ Weaver not found in classpath!")
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
